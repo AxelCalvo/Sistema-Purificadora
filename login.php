@@ -13,7 +13,8 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	}
 
 	$uname = validate($_POST['uname']);
-	$pass = validate($_POST['password']);
+  $pass = validate($_POST['password']);
+  $cifrado_pass = hash('sha512',$pass);
 
 	if ($uname==""||$pass=="") {
 		echo'
@@ -24,15 +25,17 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		';
 		exit();
 	}else{
-		$sql = "SELECT * FROM usuario WHERE nombre='$uname' AND clave='$pass'";
+		$sql = "SELECT * FROM usuario WHERE nombre='$uname' AND clave='$cifrado_pass'";
 
 		$result = mysqli_query($con, $sql);
 
 		if (mysqli_num_rows($result) === 1) {
-			$row = mysqli_fetch_assoc($result);
-            if ($row['nombre'] === $uname && $row['clave'] === $pass) {
-            	$_SESSION['nombre'] = $row['nombre'];
-            	$_SESSION['Id_Usuario'] = $row['Id_Usuario'];
+      $row = mysqli_fetch_assoc($result);
+      var_dump($row);
+      if ($row['nombre'] === $uname && $row['clave'] === $cifrado_pass) {
+              session_start();
+              $_SESSION['rol'] = $row['id_rol'];
+              $_SESSION['nombre'] = $row['nombre'];
             	header("Location:menu.php");
 				
 		        exit();

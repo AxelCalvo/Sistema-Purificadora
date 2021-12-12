@@ -1,11 +1,5 @@
-
 <?php 
-session_start();
-
-if (isset($_SESSION['Id_Usuario']) && isset($_SESSION['nombre'])) {
-
- ?>
-<?php 
+    include '../session.php';
     include("../conexion.php");
     $con=conectar();
 
@@ -109,9 +103,3 @@ if (isset($_SESSION['Id_Usuario']) && isset($_SESSION['nombre'])) {
     </body>
 </html>
 
-<?php 
-}else{
-     header("Location: ../index.php");
-     exit();
-}
- ?>

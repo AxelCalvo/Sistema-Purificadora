@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 11-12-2021 a las 18:12:14
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.12
+-- Servidor: localhost
+-- Tiempo de generación: 12-12-2021 a las 03:11:15
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -92,11 +92,30 @@ CREATE TABLE `garrafon` (
 --
 
 INSERT INTO `garrafon` (`Id_Garrafon`, `costo`, `precio_venta`, `color`, `caducidad`, `cantidad`) VALUES
-(1, 10, 21, 'Azul', '20/11/2021', 1000),
-(2, 5, 12, 'Rosa', '22/12/2021', 50),
+(1, 10, 21, 'Azul', '20/11/2021', 990),
+(2, 5, 12, 'Rosa', '22/12/2021', 48),
 (3, 7, 14, 'Azul', '20/11/2021', 100),
 (4, 10, 21, 'Morado', '20/11/2021', 200),
 (5, 25, 35, 'Transparente', '23/12/2021', 200);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `rol` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `rol`) VALUES
+(1, 'Admin'),
+(2, 'Empleado');
 
 -- --------------------------------------------------------
 
@@ -107,17 +126,18 @@ INSERT INTO `garrafon` (`Id_Garrafon`, `costo`, `precio_venta`, `color`, `caduci
 CREATE TABLE `usuario` (
   `Id_Usuario` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `clave` varchar(8) NOT NULL
+  `clave` varchar(512) NOT NULL,
+  `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`Id_Usuario`, `nombre`, `clave`) VALUES
-(1, 'Admin', '12345678'),
-(2, 'Empleado', '12345678'),
-(3, 'Docente', '12345678');
+INSERT INTO `usuario` (`Id_Usuario`, `nombre`, `clave`, `id_rol`) VALUES
+(1, 'Admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 1),
+(2, 'Empleado', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 2),
+(3, 'Docente', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 2);
 
 -- --------------------------------------------------------
 
@@ -140,7 +160,8 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`folio`, `fecha`, `cantidad`, `Id_Garrafon`, `Id_Empleado`, `Id_Cliente`, `importe_total`) VALUES
-(5, '27/11/2021', 2, 1, 1, 2, 42);
+(9, '09/12/2021', 2, 2, 1, 4, 24),
+(10, '08/12/2021', 10, 1, 1, 5, 210);
 
 --
 -- Índices para tablas volcadas
@@ -165,10 +186,17 @@ ALTER TABLE `garrafon`
   ADD PRIMARY KEY (`Id_Garrafon`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`Id_Usuario`);
+  ADD PRIMARY KEY (`Id_Usuario`),
+  ADD KEY `fk_roles_usuario` (`id_rol`);
 
 --
 -- Indices de la tabla `venta`
@@ -202,6 +230,12 @@ ALTER TABLE `garrafon`
   MODIFY `Id_Garrafon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -211,11 +245,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `fk_roles_usuario` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`);
 
 --
 -- Filtros para la tabla `venta`
