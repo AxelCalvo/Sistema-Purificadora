@@ -52,10 +52,12 @@
                             <h1>Venta</h1>
                                 <form action="insertar.php" method="POST">
 
-                    
+                                    <a>Fecha</a>
                                     <input type="date" class="form-control mb-3" name="fecha" placeholder="dia/mes/año">
-                                    <input type="number" class="form-control mb-3" min="0" name="cantidad" placeholder="Cantidad">
                                     
+                                    <a>Cantidad</a>
+                                    <input type="number" class="form-control mb-3" min="0" name="cantidad" placeholder="Cantidad">
+                                    <a>Garrafon</a>
                                     <label for="id_g">
                                      <select name="id_g" id="garrafon" class="form-select mb-3">
                                         
@@ -68,6 +70,7 @@
                                      </select>
 
                                     </label>
+                                    <a>Empleado</a>
                                     <label for="id_e">
                                      <select name="id_e" id=""class="form-select mb-3">
                                         
@@ -80,6 +83,7 @@
                                      </select>
 
                                     </label>
+                                    <a>Cliente</a>
                                     <label for="id_c">
                                      <select name="id_c" id=""class="form-select mb-3">
                                         
@@ -92,7 +96,7 @@
                                      </select>
 
                                     </label>
-                                    
+                                    <a>Total</a>
                                     <input type="text" id="total" class="form-control mb-3" name="importe_total" placeholder="Total">
                                     <input type="submit" class="btn btn-primary">
                                     

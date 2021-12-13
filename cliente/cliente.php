@@ -45,13 +45,19 @@
                             <h1>Ingrese datos</h1>
                                 <form action="insertar.php" method="POST">
 
-                                   
+                                <a>Nombres</a>
                                     <input type="text" class="form-control mb-3" name="nombres" placeholder="Nombres">
+                                <a>Apellidos</a>
                                     <input type="text" class="form-control mb-3" name="apellidos" placeholder="Apellidos">
+                                <a>Telefono</a>
                                     <input type="text" class="form-control mb-3" name="telefono" placeholder="Telefono">
+                                <a>Calle</a>
                                     <input type="text" class="form-control mb-3" name="calle" placeholder="Calle">
+                                <a>Número</a>
                                     <input type="text" class="form-control mb-3" name="numero" placeholder="Número">
+                                <a>Colonia</a>
                                     <input type="text" class="form-control mb-3" name="colonia" placeholder="Colonia">
+                                <a>Municipio</a>
                                     <input type="text" class="form-control mb-3" name="Municipio" placeholder="Municipio">
                                     <input type="submit" class="btn btn-primary">
                                     

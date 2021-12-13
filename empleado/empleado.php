@@ -44,11 +44,15 @@
                             <h1>Ingrese datos</h1>
                                 <form action="insertar.php" method="POST">
 
-                                    
+                                <a>CURP</a>
                                     <input type="text" class="form-control mb-3" name="curp" placeholder="Curp">
+                                <a>Nombres</a>
                                     <input type="text" class="form-control mb-3" name="nombres" placeholder="Nombres">
+                                <a>Apellidos</a>
                                     <input type="text" class="form-control mb-3" name="apellidos" placeholder="Apellidos">
+                                <a>Telefono</a>
                                     <input type="text" class="form-control mb-3" name="Telefono" placeholder="Telefono">
+                                
                                     <input type="submit" class="btn btn-primary">
                                   
                                 </form>

@@ -44,13 +44,18 @@
                             <h1>Ingrese datos</h1>
                                 <form action="insertar.php" method="POST">
 
-                    
-                                    <input type="text" class="form-control mb-3" name="costo" placeholder="Costp">
+                                <a>Costo</a>
+                                    <input type="text" class="form-control mb-3" name="costo" placeholder="Costo">
+                                <a>Precio</a>  
                                     <input type="text" class="form-control mb-3" name="precio_venta" placeholder="Precio Venta">
+                                <a>Color</a>
                                     <input type="text" class="form-control mb-3" name="color" placeholder="Color">
-                                    <input type="text" class="form-control mb-3" name="caducidad" placeholder="Dia/Mes/Año">
-                                    <input type="text" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
-                                    <input type="submit" class="btn btn-primary">
+                                <a>Fecha Caducidad</a>
+                                <input type="text" class="form-control mb-3" name="caducidad" placeholder="Dia/Mes/Año">
+                                <a>Cantidad</a>
+                                <input type="text" class="form-control mb-3" name="cantidad" placeholder="Cantidad">
+                                
+                                <input type="submit" class="btn btn-primary">
                                    
                                 </form>
 
