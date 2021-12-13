@@ -21,8 +21,10 @@
     <nav>
 			<ul>
 			<li><a href="../menu.php">Inicio</a></li>
-			<li><a href="../venta/venta.php">Ventas</a></li>
-				<li><a href="../empleado/empleado.php">Empleados</a></li>
+      <li><a href="../venta/venta.php">Ventas</a></li>
+        <?php if($_SESSION['rol'] == 1) {?>
+        <li><a href="../empleado/empleado.php">Empleados</a></li>
+        <?php }?>
 				<li><a href="cliente.php">Clientes</a></li>
 				<li><a href="../garrafon/garrafon.php">Garrafones</a></li>
 				<li><a href="#">Bienvenido, <?php echo $_SESSION['nombre']; ?></a>
