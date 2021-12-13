@@ -1,5 +1,5 @@
 <?php 
- include 'session.php';
+
 session_start();
 if ($_SESSION['rol'] && $_SESSION['nombre']) {
   header("Location:menu.php");
